@@ -21,6 +21,16 @@ class TodosController < ApplicationController
     head :no_content
   end
 
+  # 更新するapi
+  def update
+    todo = Todo.find(params[:id])
+    if todo.update(todo_params)
+      render json: todo
+    else
+      render json: todo.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def todo_params
