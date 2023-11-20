@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: %i[show update destroy]
   def create
     @todo = Todo.new(todo_params)
 
@@ -15,11 +14,14 @@ class TodosController < ApplicationController
     render json: @todos
   end
 
-  private
-
-  def set_todo
-    @todo = Todo.find(params[:id])
+  # 削除するapi
+  def destroy
+    todo = Todo.find(params[:id])
+    todo.destroy
+    head :no_content
   end
+
+  private
 
   def todo_params
     params.require(:todo).permit(:text)
