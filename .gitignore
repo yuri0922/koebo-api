@@ -28,8 +28,11 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+/tmp/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
 .env
+
+/mysql
